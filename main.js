@@ -1,6 +1,6 @@
 //Board
 var blockSize = 25;
-var border = 5;
+var border = 3;
 var rows = 25;
 var cols = 25;
 var board;
@@ -74,7 +74,7 @@ function update()
         return;
     }
 
-    context.fillStyle="white";
+    context.fillStyle="grey";
     context.fillRect(0, 0, board.width, board.height);
 
     context.fillStyle="black";
