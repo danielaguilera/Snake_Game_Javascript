@@ -74,7 +74,7 @@ function update()
         return;
     }
 
-    context.fillStyle="green";
+    context.fillStyle="white";
     context.fillRect(0, 0, board.width, board.height);
 
     context.fillStyle="black";
