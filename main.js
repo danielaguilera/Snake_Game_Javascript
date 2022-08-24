@@ -2,7 +2,7 @@
 var blockSize = 25;
 var border = 3;
 var rows = 25;
-var cols = 25;
+var cols = 30;
 var board;
 var context;
 
@@ -26,7 +26,8 @@ var score = 0;
 var score_label;
 
 //Audio
-let sound = new Audio('crash.mp3');
+let crash_sound = new Audio('crash.mp3');
+let apple_sound = new Audio('apple_sound.mp3');
 
 //Game over flag:
 var gameOver = false;
@@ -91,7 +92,7 @@ function update()
         placeFood();
         score++;
         update_score_label();
-        sound.play();
+        apple_sound.play();
     }
 
     for (let i = snakeBody.length-1 ; i > 0; i--)
@@ -176,11 +177,11 @@ function placeSnake()
 
 function check_boundaries()
 {
-    if (snakeX < 0 || snakeX >= cols*blockSize || snakeY < 0 || snakeY >= rows*blockSize)
+    if (snakeX < 0 || snakeX >= (cols-1)*blockSize || snakeY < 0 || snakeY >= (rows-1)*blockSize)
     {
         gameOver = true;
-        sound.play();
-        alert("You crashed! Game Over");
+        crash_sound.play();
+        score_label.innerHTML = "You crashed! Game Over";
     }
 }
 
@@ -193,8 +194,8 @@ function check_body()
         if (snakeX == body_x && snakeY == body_y)
         {
             gameOver = true;
-            sound.play();
-            alert("You ate yourself! Game Over");
+            crash_sound.play();
+            score_label.innerHTML = "You ate yourself! Game Over";
             return;
         }
     }
